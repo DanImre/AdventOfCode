@@ -1,0 +1,15 @@
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\bin\Debug\net6.0\AdventOfCode2023.exe
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\bin\Debug\net6.0\AdventOfCode2023.deps.json
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\bin\Debug\net6.0\AdventOfCode2023.runtimeconfig.json
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\bin\Debug\net6.0\AdventOfCode2023.dll
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\bin\Debug\net6.0\AdventOfCode2023.pdb
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.GeneratedMSBuildEditorConfig.editorconfig
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.AssemblyInfoInputs.cache
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.AssemblyInfo.cs
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.csproj.CoreCompileInputs.cache
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.sourcelink.json
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.dll
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\refint\AdventOfCode2023.dll
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.pdb
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.genruntimeconfig.cache
+E:\----IMI----\Egyetem\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\ref\AdventOfCode2023.dll
