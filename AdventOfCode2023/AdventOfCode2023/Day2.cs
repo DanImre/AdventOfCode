@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +21,7 @@ namespace AdventOfCode2023
 
             foreach (var item in s)
             {
-                string[] temp = item.Split(":", StringSplitOptions.RemoveEmptyEntries);
+                string[] temp = item.Split(':', StringSplitOptions.RemoveEmptyEntries);
 
                 int ID = int.Parse(temp[0].Split(' ')[1]);
 
@@ -49,14 +48,15 @@ namespace AdventOfCode2023
                             default:
                                 break;
                         }
+                        if (!possible)
+                            break;
                     }
                     if (!possible)
                         break;
                 }
+
                 if (possible)
-                {
                     solution += ID;
-                }
             }
 
             return solution;
@@ -94,7 +94,6 @@ namespace AdventOfCode2023
                         }
                     }
                 }
-                //Console.WriteLine(redgreenblue[0] + " " + redgreenblue[1] +" " + redgreenblue[2] + " | " + (redgreenblue[0] * redgreenblue[1] * redgreenblue[2]));
 
                 solution += redgreenblue[0] * redgreenblue[1] * redgreenblue[2];
             }
