@@ -25,11 +25,13 @@ namespace AdventOfCode2023
                     Select(kk => kk.Split(' ', StringSplitOptions.RemoveEmptyEntries).
                     Select(kk => int.Parse(kk)).
                     ToArray()).ToArray();
+
                 HashSet<int> left = new HashSet<int>(temp[0]);
                 int score = 1;
                 foreach (var item in temp[1])
                     if(left.Contains(item))
                         score <<= 1;
+
                 solution += score >> 1;
             }
 
@@ -61,10 +63,10 @@ namespace AdventOfCode2023
             long solution = 0;
 
             long[] amounts = new long[s.Length];
-            Array.Fill(amounts, 1);
 
             for (int i = 0; i < scores.Count; i++)
             {
+                amounts[i] += 1;
                 for (int j = i + 1; j <= scores[i] + i && j < amounts.Length; j++)
                     amounts[j] += amounts[i];
 

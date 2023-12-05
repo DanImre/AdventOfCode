@@ -56,6 +56,13 @@ namespace AdventOfCode2023
                     else
                         Console.WriteLine(d4.PartTwo());
                     break;
+                case "5":
+                    Day5 d5 = new Day5();
+                    if (ans2 == "1")
+                        Console.WriteLine(d5.PartOne());
+                    else
+                        Console.WriteLine(d5.PartTwo());
+                    break;
                 default:
                     break;
             }
