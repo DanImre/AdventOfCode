@@ -77,6 +77,13 @@ namespace AdventOfCode2023
                     else
                         Console.WriteLine(d7.PartTwo());
                     break;
+                case "8":
+                    Day8 d8 = new Day8();
+                    if (ans2 == "1")
+                        Console.WriteLine(d8.PartOne());
+                    else
+                        Console.WriteLine(d8.PartTwo());
+                    break;
                 default:
                     break;
             }
