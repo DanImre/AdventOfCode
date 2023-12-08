@@ -1,4 +1,7 @@
 ﻿using System;
+
+
+
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
@@ -40,8 +43,6 @@ namespace AdventOfCode2023
             //string[] s = File.ReadAllLines("day8test.txt");
             string[] s = File.ReadAllLines("day8.txt");
 
-            Queue<char> q = new Queue<char>(s[0]);
-
             Dictionary<string, Node> nodes = new Dictionary<string, Node>();
 
             foreach (var item in s.TakeLast(s.Length - 2).Select(kk => kk.Substring(0,3)))
@@ -62,16 +63,10 @@ namespace AdventOfCode2023
 
             Node curr = nodes["AAA"];
             while (curr.Name != "ZZZ")
-            {
-                char lr = q.Dequeue();
-                if (lr == 'L')
+                if (s[0][(int)(solution++ % s[0].Length)] == 'L')
                     curr = curr.Left;
                 else
                     curr = curr.Right;
-                
-                q.Enqueue(lr);
-                ++solution;
-            }
 
             return solution;
         }
@@ -99,32 +94,26 @@ namespace AdventOfCode2023
             // Conveniently each start node has a repeating path, ending with a node that ends with a 'Z'
             // Don't know why yet
 
-            Dictionary<Node, List<int>> zLocations = new Dictionary<Node, List<int>>();
-            Dictionary<Node, (int Loopstart, int Looplength)> loops = new Dictionary<Node, (int Loopstart, int Looplength)>();
-
             Node[] startNodes = nodes.Keys.Where(kk => kk[2] == 'A').Select(kk => nodes[kk]).ToArray();
 
             List<int> loopLengths = new List<int>();
-
-            List<char> LRlist = new List<char>(s[0]);
 
             foreach (var item in startNodes)
             {
                 Node curr = item;
                 int steps = 0;
-                while (curr.Name[2] != 'Z')
-                {
-                    char lr = LRlist[steps++ % LRlist.Count];
 
-                    if (lr == 'L')
+                while (curr.Name[2] != 'Z')
+                    if (s[0][steps++ % s[0].Length] == 'L')
                         curr = curr.Left;
                     else
                         curr = curr.Right;
-                }
+
                 loopLengths.Add(steps);
             }
 
             long solution = loopLengths[0];
+
             for (int i = 1; i < loopLengths.Count; i++)
                 solution = solution / EuclidianAlgorithmGCD(solution, loopLengths[i]) * loopLengths[i];
 
