@@ -27,3 +27,4 @@ C:\Users\Imre\Desktop\Git repos\AdventOfCode2023\AdventOfCode2023\AdventOfCode20
 C:\Users\Imre\Desktop\Git repos\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.pdb
 C:\Users\Imre\Desktop\Git repos\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.genruntimeconfig.cache
 C:\Users\Imre\Desktop\Git repos\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\ref\AdventOfCode2023.dll
+C:\Users\Imre\Desktop\Git repos\AdventOfCode2023\AdventOfCode2023\AdventOfCode2023\obj\Debug\net6.0\AdventOfCode2023.sourcelink.json
