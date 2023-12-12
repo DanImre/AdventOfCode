@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2023
 {
-    public class Day6
+    public class Day06
     {
 
 
-        public Day6()
+        public Day06()
         {
 
         }

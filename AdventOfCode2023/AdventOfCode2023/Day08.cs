@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2023
 {
-    public class Day8
+    public class Day08
     {
-        public Day8()
+        public Day08()
         {
 
         }
