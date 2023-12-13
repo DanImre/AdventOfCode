@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\uuuhsk\\Desktop\\git repos\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023.csproj": {}
+    "E:\\----IMI----\\Egyetem\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023.csproj": {}
   },
   "projects": {
-    "C:\\Users\\uuuhsk\\Desktop\\git repos\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023.csproj": {
+    "E:\\----IMI----\\Egyetem\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\uuuhsk\\Desktop\\git repos\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023.csproj",
+        "projectUniqueName": "E:\\----IMI----\\Egyetem\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023.csproj",
         "projectName": "AdventOfCode2023",
-        "projectPath": "C:\\Users\\uuuhsk\\Desktop\\git repos\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023.csproj",
-        "packagesPath": "C:\\Users\\uuuhsk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\uuuhsk\\Desktop\\git repos\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\obj\\",
+        "projectPath": "E:\\----IMI----\\Egyetem\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023.csproj",
+        "packagesPath": "C:\\Users\\19dar\\.nuget\\packages\\",
+        "outputPath": "E:\\----IMI----\\Egyetem\\AdventOfCode2023\\AdventOfCode2023\\AdventOfCode2023\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\uuuhsk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\19dar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
