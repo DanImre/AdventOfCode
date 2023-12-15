@@ -130,6 +130,13 @@ namespace AdventOfCode2023
                     else
                         Console.WriteLine($"The total load on the north support beams after 1000000000 cycles: {d14.PartTwo()}");
                     break;
+                case "15":
+                    Day15 d15 = new Day15();
+                    if (ans2 == "1")
+                        Console.WriteLine($"The sum of the initialization sequence results: {d15.PartOne()}");
+                    else
+                        Console.WriteLine($"The focusing power of the resulting lens configuration: {d15.PartTwo()}");
+                    break;
                 default:
                     break;
             }
