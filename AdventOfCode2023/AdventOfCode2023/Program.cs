@@ -137,6 +137,13 @@ namespace AdventOfCode2023
                     else
                         Console.WriteLine($"The focusing power of the resulting lens configuration: {d15.PartTwo()}");
                     break;
+                case "16":
+                    Day16 d16 = new Day16();
+                    if (ans2 == "1")
+                        Console.WriteLine($"The amount of tiles end up being energized: {d16.PartOne()}");
+                    else
+                        Console.WriteLine($"The amount of tiles are energized in that configuration: {d16.PartTwo()}");
+                    break;
                 default:
                     break;
             }
