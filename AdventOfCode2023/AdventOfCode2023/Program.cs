@@ -144,6 +144,13 @@ namespace AdventOfCode2023
                     else
                         Console.WriteLine($"The amount of tiles are energized in that configuration: {d16.PartTwo()}");
                     break;
+                case "17":
+                    Day17 d17= new Day17();
+                    if (ans2 == "1")
+                        Console.WriteLine($"The amount of tiles end up being energized: {d17.PartOne()}");
+                    else
+                        Console.WriteLine($"The amount of tiles are energized in that configuration: {d17.PartTwo()}");
+                    break;
                 default:
                     break;
             }
