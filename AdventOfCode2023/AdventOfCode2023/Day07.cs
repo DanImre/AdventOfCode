@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2023
 {
-    public class Day7
+    public class Day07
     {
-        public Day7()
+        public Day07()
         {
 
         }
@@ -105,7 +105,7 @@ namespace AdventOfCode2023
 
         private int getValue(char c)
         {
-            if ('2' <= c && c <= '9')
+            if (char.IsDigit(c))
                 return c - '0';
 
             switch (c)
@@ -189,7 +189,7 @@ namespace AdventOfCode2023
 
         private int getValueForPartTwo(char c)
         {
-            if ('2' <= c && c <= '9')
+            if (char.IsDigit(c))
                 return c - '0';
 
             switch (c)
