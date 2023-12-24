@@ -147,9 +147,23 @@ namespace AdventOfCode2023
                 case "17":
                     Day17 d17= new Day17();
                     if (ans2 == "1")
-                        Console.WriteLine($"The amount of tiles end up being energized: {d17.PartOne()}");
+                        Console.WriteLine($"The least heat loss it can incur: {d17.PartOne()}");
                     else
-                        Console.WriteLine($"The amount of tiles are energized in that configuration: {d17.PartTwo()}");
+                        Console.WriteLine($"The least heat loss it can incur with the ultra crucibles: {d17.PartTwo()}");
+                    break;
+                case "18":
+                    Day18 d18 = new Day18();
+                    if (ans2 == "1")
+                        Console.WriteLine($"The lagoon can hold this many cubic meters of lava: {d18.PartOne()}");
+                    else
+                        Console.WriteLine($"The lagoon can hold this many cubic meters of lava with the correct instructions: {d18.PartTwo()}");
+                    break;
+                case "19":
+                    Day19 d19 = new Day19();
+                    if (ans2 == "1")
+                        Console.WriteLine($"Sum of ratings of the accepted parts: {d19.PartOne()}");
+                    else
+                        Console.WriteLine($"The Distinct combinations of ratings that will be accepted: {d19.PartTwo()}");
                     break;
                 default:
                     break;
