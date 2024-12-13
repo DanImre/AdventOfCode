@@ -9,10 +9,10 @@ namespace AdventOfCode2024
 {
     public class Day12 : IDay
     {
-        //public string InputPath { get; set; } = "day12Input.txt";
+        public string InputPath { get; set; } = "day12Input.txt";
         //public string InputPath { get; set; } = "day12TestInput.txt";
         //public string InputPath { get; set; } = "day12TestInput2.txt";
-        public string InputPath { get; set; } = "day12TestInput3.txt";
+        //public string InputPath { get; set; } = "day12TestInput3.txt";
 
         private enum Wall
         {
@@ -139,8 +139,8 @@ namespace AdventOfCode2024
                         // forward
                         int x = currX + xStep;
                         int y = currY + yStep;
-                        while (x < s[currY].Length - 1
-                            && y < s.Length - 1
+                        while (x < s[currY].Length
+                            && y < s.Length
                             && s[y][x] == s[currY][currX]
                             && countedWalls.Remove((y, x, wall)))
                         {
@@ -151,8 +151,8 @@ namespace AdventOfCode2024
                         // backwards
                         x = currX - xStep;
                         y = currY - yStep;
-                        while (x > 0
-                            && y > 0
+                        while (x >= 0
+                            && y >= 0
                             && s[y][x] == s[currY][currX]
                             && countedWalls.Remove((y, x, wall)))
                         {
@@ -160,6 +160,7 @@ namespace AdventOfCode2024
                             y -= yStep;
                         }
                     }
+
 
                     // Fuse walls -> remove connecting ones
                     foreach (var curr in countedWalls.ToList())
@@ -173,12 +174,10 @@ namespace AdventOfCode2024
                             removeHorizontalOrVertical(curr.y, curr.x, false, curr.wall);
                     }
 
-                    Console.WriteLine(s[i][j] + " | " + localVisited.Count + " * " + countedWalls.Count);
-
                     solution += countedWalls.Count * localVisited.Count;
                 }
 
-            Console.WriteLine($"The new total price of fencing all regions {solution}"); //10237 888017 too high with queue 892707with stack
-        }
+            Console.WriteLine($"The new total price of fencing all regions {solution}"); //887932
+		}
     }
 }
