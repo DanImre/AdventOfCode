@@ -18,14 +18,14 @@ namespace AdventOfCode2025
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("Which day would you like to run? [1-24] (Q to quit)");
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    string? input = Console.ReadLine();
+                    string? input = Console.ReadLine()?.Trim();
                     if (input?.ToLower() == "q")
                     {
                         keepRunning = false;
                         break;
                     }
                     int.TryParse(input, out chosenDay);
-                    classType = Type.GetType("AdventOfCode2024.Day" + chosenDay);
+                    classType = Type.GetType("AdventOfCode2025.Day" + chosenDay);
                 }
                 while (chosenDay < 1 || chosenDay > 24 || classType == null);
 
@@ -40,7 +40,7 @@ namespace AdventOfCode2025
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("Which part would you like to run ? [1-2] (Q to quit)");
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    string? input = Console.ReadLine();
+                    string? input = Console.ReadLine()?.Trim();
                     if (input?.ToLower() == "q")
                     {
                         keepRunning = false;
@@ -63,7 +63,7 @@ namespace AdventOfCode2025
                     dayInstance.PartTwo();
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"A kód {stopwatch.Elapsed} idő alatt futott le!");
+                Console.WriteLine($"Runtime: {stopwatch.Elapsed}");
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
