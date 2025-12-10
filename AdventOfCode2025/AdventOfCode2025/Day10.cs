@@ -1,4 +1,5 @@
-﻿using Elsheimy.Components.Linears;
+﻿using System.Diagnostics.CodeAnalysis;
+using Elsheimy.Components.Linears;
 
 namespace AdventOfCode2025
 {
@@ -79,6 +80,8 @@ namespace AdventOfCode2025
                 })
                 .ToArray();
 
+            int solution = 0;
+
             for (int i = 0; i < s.Length; i++)
             {
                 var row = s[i];
@@ -122,7 +125,88 @@ namespace AdventOfCode2025
                         freeVariables.Add((j, freeVarCount + 1));
                 }
 
+                if (freeVariables.Count == 0)
+                {
+                    solution += (int)Math.Round(solutionSum, 0);
+                    continue;
+                }
+
+                Func<int[], int>[] calcVariable = new Func<int[], int>[columnCount - 1];
+                int skippedColumns = 0;
+                for (int j = 0; j < columnCount - 1; j++)
+                {
+                    if (freeVariables.Any(x => x.colIndex == j))
+                    {
+                        ++skippedColumns;
+                        calcVariable[j] = _ => 0;
+                        continue;
+                    }
+
+                    int jCopy = j;
+                    int skippedColumnsCopy = skippedColumns;
+                    calcVariable[j] = (int[] freeVars) =>
+                    {
+                        int rowIndex = jCopy - skippedColumnsCopy;
+                        double solution = reduced[rowIndex, columnCount - 1];
+                        int innerIndex = 0;
+                        foreach (var item in freeVariables)
+                            solution -= freeVars[innerIndex++] * reduced[rowIndex, item.colIndex];
+
+                        return (int)Math.Round(solution, 0);
+                    };
+                }
+
+                int recursiveCalc(int[] presses, int index)
+                {
+                    if (index >= freeVariables.Count)
+                        return int.MaxValue;
+
+                    int[] variablePresses = calcVariable.Select(x => x(presses)).ToArray();
+                    int innerIndex = 0;
+                    foreach (var item in freeVariables)
+                        variablePresses[item.colIndex] = presses[innerIndex++];
+
+                    int[] proposedSolution = new int[rowCount];
+                    for (int j = 0; j < variablePresses.Length; j++)
+                        for (int l = 0; l < s[i].arr[j].Length; l++)
+                            proposedSolution[s[i].arr[j][l]] += variablePresses[j];
+
+                    bool overStepped = false;
+                    bool isASolution = true;
+                    for (int j = 0; j < s[i].correctAnswer.Length; j++)
+                    {
+                        if (s[i].correctAnswer[j] < proposedSolution[j])
+                        {
+                            overStepped = true;
+                            break;
+                        }
+
+                        isASolution &= s[i].correctAnswer[j] == proposedSolution[j];
+                    }
+
+                    if (overStepped)
+                        return int.MaxValue;
+
+                    if (isASolution)
+                        return variablePresses.Sum();
+
+                    int skipping = recursiveCalc(presses, index + 1);
+                    //pressing 
+                    presses[index]++;
+                    int pressing = recursiveCalc(presses, index);
+
+                    return Math.Min(skipping, pressing);
+                }
+
+                Console.WriteLine(calcVariable[0](Enumerable.Repeat(1, freeVariables.Count).ToArray()));
+
                 // S = sum(solutions) + free variable counts
+
+                Console.WriteLine(m.ToString());
+                Console.WriteLine();
+                Console.WriteLine(reduced.ToString());
+                Console.WriteLine(string.Join(",", freeVariables));
+                Console.WriteLine("----------------------------");
             }
 
             return;
