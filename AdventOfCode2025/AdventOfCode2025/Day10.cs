@@ -1,12 +1,13 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Elsheimy.Components.Linears;
+﻿using AngouriMath;
+using AngouriMath.Extensions;
+using DataStructures;
 
 namespace AdventOfCode2025
 {
     public class Day10 : IDay
     {
-        //public string InputPath { get; set; } = "day10Input.txt";
-        public string InputPath { get; set; } = "day10InputTest.txt";
+        public string InputPath { get; set; } = "day10Input.txt";
+        //public string InputPath { get; set; } = "day10InputTest.txt";
 
         public void PartOne()
         {
@@ -87,25 +88,31 @@ namespace AdventOfCode2025
                 var row = s[i];
                 int rowCount = row.correctAnswer.Length;
                 int columnCount = row.arr.Length + 1;
-                Matrix m = new(rowCount, columnCount);
 
-                for (int j = 0; j < row.arr.Length; j++)
-                {
-                    for (int l = 0; l < row.arr[j].Length; l++)
-                        m[row.arr[j][l], j] = 1;
-                }
-
+                long[,] m = new long[rowCount, columnCount];
+                
                 for (int j = 0; j < rowCount; j++)
                     m[j, columnCount - 1] = row.correctAnswer[j];
 
-                Matrix reduced = m.Reduce(MatrixReductionForm.ReducedRowEchelonForm);
+                for (int j = 0; j < row.arr.Length; j++)
+                    for (int l = 0; l < row.arr[j].Length; l++)
+                        m[row.arr[j][l], j] = 1;
+
+                var rref = RationalSolver.GetRREF(m);
+                double[][] reduced = new double[rowCount][];
+                for (int j = 0; j < rowCount; j++)
+                {
+                    reduced[j] = new double[columnCount];
+                    for (int l = 0; l < columnCount; l++)
+                        reduced[j][l] = (double)rref[j, l].Num / (double)rref[j, l].Den;
+                }
 
                 double solutionSum = 0;
                 List<Func<double[], bool>> validations = new();
                 for (int l = 0; l < rowCount; l++)
                 {
-                    solutionSum += reduced[l, columnCount - 1];
-                    double[] currRow = reduced.GetRowVectors()[l].InnerArray;
+                    solutionSum += reduced[l][columnCount - 1];
+                    double[] currRow = reduced[l];
                     validations.Add((double[] input) => currRow.Zip(input).SkipLast(1).Sum(x => x.First * x.Second) == currRow[^1]);
                 }
 
@@ -115,9 +122,9 @@ namespace AdventOfCode2025
                     int count = 0;
                     double freeVarCount = 0;
                     for (int l = 0; l < rowCount; l++)
-                        if (reduced[l, j] != 0)
+                        if (reduced[l][j] != 0)
                         {
-                            freeVarCount += -reduced[l, j];
+                            freeVarCount += -reduced[l][j];
                             count++;
                         }
 
@@ -147,72 +154,74 @@ namespace AdventOfCode2025
                     calcVariable[j] = (int[] freeVars) =>
                     {
                         int rowIndex = jCopy - skippedColumnsCopy;
-                        double solution = reduced[rowIndex, columnCount - 1];
+                        double calcSolution = reduced[rowIndex][columnCount - 1];
                         int innerIndex = 0;
                         foreach (var item in freeVariables)
-                            solution -= freeVars[innerIndex++] * reduced[rowIndex, item.colIndex];
+                            calcSolution -= freeVars[innerIndex++] * reduced[rowIndex][item.colIndex];
 
-                        return (int)Math.Round(solution, 0);
+                        return (int)Math.Round(calcSolution, 0);
                     };
                 }
 
-                int recursiveCalc(int[] presses, int index)
+                Queue<int[]> q = new();
+                q.Enqueue(new int[freeVariables.Count]);
+                HashSet<string> seen = new();
+                int bestSolutionInRow = int.MaxValue;
+                while (q.Count != 0)
                 {
-                    if (index >= freeVariables.Count)
-                        return int.MaxValue;
+                    int[] curr = q.Dequeue();
 
-                    int[] variablePresses = calcVariable.Select(x => x(presses)).ToArray();
-                    int innerIndex = 0;
-                    foreach (var item in freeVariables)
-                        variablePresses[item.colIndex] = presses[innerIndex++];
+                    string key = string.Join(",", curr);
+                    if (!seen.Add(key))
+                        continue;
 
-                    int[] proposedSolution = new int[rowCount];
-                    for (int j = 0; j < variablePresses.Length; j++)
-                        for (int l = 0; l < s[i].arr[j].Length; l++)
-                            proposedSolution[s[i].arr[j][l]] += variablePresses[j];
-
+                    // Overstepped with only the free variables
                     bool overStepped = false;
-                    bool isASolution = true;
-                    for (int j = 0; j < s[i].correctAnswer.Length; j++)
-                    {
-                        if (s[i].correctAnswer[j] < proposedSolution[j])
-                        {
-                            overStepped = true;
-                            break;
-                        }
-
-                        isASolution &= s[i].correctAnswer[j] == proposedSolution[j];
-                    }
+                    for (int j = 0; j < curr.Length && !overStepped; j++)
+                        foreach (var lampIndex in s[i].arr[freeVariables[j].colIndex])
+                            if (s[i].correctAnswer[lampIndex] < curr[j])
+                            {
+                                overStepped = true;
+                                break;
+                            }
 
                     if (overStepped)
-                        return int.MaxValue;
+                        continue;
 
-                    if (isASolution)
-                        return variablePresses.Sum();
+                    int[] variablePresses = calcVariable.Select(x => x(curr)).ToArray();
+                    if (variablePresses.All(x => x >= 0))
+                    {
+                        for (int j = 0; j < curr.Length; j++)
+                            variablePresses[freeVariables[j].colIndex] = curr[j];
 
-                    int skipping = recursiveCalc(presses, index + 1);
-                    //pressing 
-                    presses[index]++;
-                    int pressing = recursiveCalc(presses, index);
+                        int[] proposedSolution = new int[rowCount];
+                        for (int j = 0; j < variablePresses.Length; j++)
+                            foreach (var lampIndex in s[i].arr[j])
+                                proposedSolution[lampIndex] += variablePresses[j];
 
-                    return Math.Min(skipping, pressing);
+                        bool isASolution = true;
+                        for (int j = 0; j < s[i].correctAnswer.Length; j++)
+                            isASolution &= s[i].correctAnswer[j] == proposedSolution[j];
+
+                        if (isASolution)
+                            bestSolutionInRow = Math.Min(bestSolutionInRow, variablePresses.Sum());
+                    }
+
+                    for (int j = 0; j < curr.Length; j++)
+                    {
+                        int[] next = curr.ToArray();
+                        next[j]++;
+                        q.Enqueue(next);
+                    }
                 }
 
-                Console.WriteLine(calcVariable[0](Enumerable.Repeat(1, freeVariables.Count).ToArray()));
-
-                // S = sum(solutions) + free variable counts
-
-                Console.WriteLine(m.ToString());
-                Console.WriteLine();
-                Console.WriteLine(reduced.ToString());
-                Console.WriteLine(string.Join(",", freeVariables));
-                Console.WriteLine("----------------------------");
+                //Console.WriteLine($"{i}-th solution is: {bestSolutionInRow}");
+                solution += bestSolutionInRow;
             }
 
-            return;
-
-            // 469
-            //Console.WriteLine($"The fewest button presses required to correctly configure the joltage level counters on all of the machines is {solution}");
+            // 19190 too low
+            // 19293
+            Console.WriteLine($"The fewest button presses required to correctly configure the joltage level counters on all of the machines is {solution}");
         }
     }
 }

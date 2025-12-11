@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AngouriMath" Version="1.3.0" />
     <PackageReference Include="Elsheimy.Components.Linears" Version="1.0.0" />
   </ItemGroup>
 
