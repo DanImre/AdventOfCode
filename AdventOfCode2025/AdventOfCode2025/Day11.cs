@@ -21,7 +21,7 @@ namespace AdventOfCode2025
                     .ToDictionary(
                         x => x[0], 
                         x => x[1]
-                            .Split(" ", StringSplitOptions.RemoveEmptyEntries))
+                            .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                             .ToArray());
 
             Dictionary<string, int> memo = new Dictionary<string, int>()
