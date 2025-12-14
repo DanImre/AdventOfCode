@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,10 +76,6 @@ namespace AdventOfCode2024
                 {
                     case 0:
                         registerA = (int)(registerA / Math.Pow(2, combo));
-
-
-                        registerA = (int)(registerA / Math.Pow(2, combo));
-
                         break;
                     case 1:
                         registerB ^= literal;
@@ -112,15 +110,40 @@ namespace AdventOfCode2024
             Console.WriteLine($"The coma separeted output string is: {solution}");
         }
 
+        // Credit: https://git.sr.ht/~murr/advent-of-code/tree/master/item/2024/17/p2.c
+        /*
+            Making a quine on this machine isn't as complicated as it looks:
+            - op out only every reads 0-3 or the last 3 bits of reg A, B, or C
+            - reg B and C are only ever set by:
+                - xoring with literal 0-7 (ie on low 3 bits)
+                - anding with last 3 bits of 0-3 or a reg (ie set to 0-7)
+                - rshift of reg A
+            - that means the whole program is basically just shifting off reg A,
+              mutating the last 3 bits, and outputting it 3 bits at a time.
+            - the xor and jump means we can't easily reverse it but above means that
+              if you can get 3 bits in A that gives a valid out value, it will
+              always output the same 3 bit value if lshifted by 3
+            - not all series of values will eventually produce a correct answer so
+              we search the full space, another DFS babee
+        */
         public void PartTwo()
         {
-            int registerA = 0;
-            int registerB = 0;
-            int registerC = 0;
-
             int[] program = Array.Empty<int>();
 
-            int GetComboValue(int operand)
+            using (StreamReader f = new StreamReader(InputPath))
+            {
+                _ = int.Parse(f.ReadLine()!.Split(':').Last());
+                _ = int.Parse(f.ReadLine()!.Split(':').Last());
+                _ = int.Parse(f.ReadLine()!.Split(':').Last());
+                f.ReadLine();
+                program = f.ReadLine()!.Split(':').Last().Split(',').Select(int.Parse).ToArray();
+            }
+
+            long registerA = 0;
+            long registerB = 0;
+            long registerC = 0;
+
+            long GetComboValue(int operand)
             {
                 if (operand <= 3)
                     return operand;
@@ -136,42 +159,23 @@ namespace AdventOfCode2024
                 }
             }
 
-            using (StreamReader f = new StreamReader(InputPath))
+            long getFirstOutputWithRegisterAValue(long value)
             {
-                registerA = int.Parse(f.ReadLine()!.Split(':').Last());
-                registerB = int.Parse(f.ReadLine()!.Split(':').Last());
-                registerC = int.Parse(f.ReadLine()!.Split(':').Last());
-                f.ReadLine();
-                program = f.ReadLine()!.Split(':').Last().Split(',').Select(int.Parse).ToArray();
-            }
-
-            string goalState = string.Join(",", program);
-
-            for (int llll = 700000000; llll < int.MaxValue; llll++)
-            {
-                if (llll % 1000000 == 0)
-                    Console.WriteLine($"Testing register A initial value: {llll}");
-
-                registerA = llll;
+                registerA = value;
                 registerB = 0;
                 registerC = 0;
 
-                int outputIndex = 0;
-
-                List<int> output = new();
-                bool IsShet = false;
-
-                for (int i = 0; i < program.Length - 1 && !IsShet; i += 2)
+                for (int i = 0; i < program.Length - 1; i += 2)
                 {
                     int opcode = program[i];
 
                     int literal = program[i + 1];
-                    int combo = GetComboValue(program[i + 1]);
+                    long combo = GetComboValue(program[i + 1]);
 
                     switch (opcode)
                     {
                         case 0:
-                            registerA = (int)(registerA / Math.Pow(2, combo));
+                            registerA = (long)(registerA / Math.Pow(2, combo));
                             break;
                         case 1:
                             registerB ^= literal;
@@ -190,129 +194,41 @@ namespace AdventOfCode2024
                             registerB ^= registerC;
                             break;
                         case 5:
-                            if (program.Length <= outputIndex
-                                || (combo % 8) != program[outputIndex++])
-                            {
-                                IsShet = true;
-                                continue;
-                            }
-
-                            output.Add(combo % 8);
-                            break;
+                            return combo % 8;
                         case 6:
-                            registerB = (int)(registerA / Math.Pow(2, combo));
+                            registerB = (long)(registerA / Math.Pow(2, combo));
                             break;
                         default:
-                            registerC = (int)(registerA / Math.Pow(2, combo));
+                            registerC = (long)(registerA / Math.Pow(2, combo));
                             break;
                     }
                 }
 
-                if (IsShet)
-                    continue;
-
-                string solution = string.Join(',', output);
-
-                if (solution == goalState)
-                    Console.WriteLine(registerA);
+                return -1;
             }
 
-            //Console.WriteLine($"{solution} is the lowest positive initial value for register A that causes the program to output a copy of itself"); // 1000000000 low
-        }
-
-        public void PartTwoSmart()
-        {
-            Range registerA = new();
-            Range registerB = new();
-            Range registerC = new();
-
-            int[] program = Array.Empty<int>();
-
-            Range GetComboValue(int operand)
+            long recursiveSolution(int index, long curr)
             {
-                if (operand <= 3)
-                    return new(operand, operand);
+                if (index < 0)
+                    return curr;
 
-                switch (operand)
+                curr <<= 3;
+                long target = program[index];
+                for (int i = 0; i < 8; ++i)
                 {
-                    case 4:
-                        return registerA;
-                    case 5:
-                        return registerB;
-                    default:
-                        return registerC;
+                    long n = curr + i;
+                    long firstOutput = getFirstOutputWithRegisterAValue(curr + i);
+                    if (firstOutput != target)
+                        continue;
+
+                    long nextIter = recursiveSolution(index - 1, n);
+                    if (nextIter >= 0)
+                        return nextIter;
                 }
+                return -1;
             }
 
-            using (StreamReader f = new StreamReader(InputPath))
-            {
-                _ = int.Parse(f.ReadLine()!.Split(':').Last());
-                _ = int.Parse(f.ReadLine()!.Split(':').Last());
-                _ = int.Parse(f.ReadLine()!.Split(':').Last());
-                f.ReadLine();
-                program = f.ReadLine()!.Split(':').Last().Split(',').Select(int.Parse).ToArray();
-            }
-
-            string goalState = string.Join(",", program);
-
-            int outputIndex = 0;
-
-            List<int> output = new();
-
-            for (int i = program.Length - 2; i >= 0; i -= 2)
-            {
-                int opcode = program[i];
-
-                int literal = program[i + 1];
-                Range combo = GetComboValue(program[i + 1]);
-
-                switch (opcode)
-                {
-                    case 0:
-                        //registerA = (int)(registerA / Math.Pow(2, combo));
-
-                        long lowEndMultipler = (long)Math.Pow(2, combo.Start);
-                        long highEndMultipler = (long)Math.Pow(2, combo.End + 1);
-                        registerA = new Range(registerA.Start * lowEndMultipler, registerA.End * highEndMultipler - 1);
-                        break;
-                    case 1:
-                        registerB ^= literal;
-
-
-                        break;
-                    case 2:
-                        registerB = combo % 8;
-                        break;
-                    case 3:
-                        if (registerA == 0)
-                            continue;
-
-                        i = literal - 2;
-                        registerB = combo % 8;
-                        break;
-                    case 4:
-                        registerB ^= registerC;
-                        break;
-                    case 5:
-                        if (program.Length <= outputIndex
-                            || (combo % 8) != program[outputIndex++])
-                        {
-                            IsShet = true;
-                            continue;
-                        }
-
-                        output.Add(combo % 8);
-                        break;
-                    case 6:
-                        registerB = (int)(registerA / Math.Pow(2, combo));
-                        break;
-                    default:
-                        registerC = (int)(registerA / Math.Pow(2, combo));
-                        break;
-                }
-            }
-
-            int solution = 0;
+            long solution = recursiveSolution(program.Length - 1, 0);
 
             Console.WriteLine($"{solution} is the lowest positive initial value for register A that causes the program to output a copy of itself"); // 1000000000 low
         }
