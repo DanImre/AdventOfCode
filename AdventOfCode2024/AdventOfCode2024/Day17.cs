@@ -230,7 +230,8 @@ namespace AdventOfCode2024
 
             long solution = recursiveSolution(program.Length - 1, 0);
 
-            Console.WriteLine($"{solution} is the lowest positive initial value for register A that causes the program to output a copy of itself"); // 1000000000 low
+            // 37221270076916
+            Console.WriteLine($"{solution} is the lowest positive initial value for register A that causes the program to output a copy of itself");
         }
     }
 }
