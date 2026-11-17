@@ -5,7 +5,7 @@ namespace AdventOfCode2024
     public class Day21 : IDay
     {
         public string InputPath { get; set; } = "day21Input.txt";
-        //public string InputPath { get; set; } = "day21InputTest.txt";
+        //public string InputPath { get; set; } = "day21TestInput.txt";
 
         private int NumberOfDirectionalRobots = 2;
 
