@@ -165,6 +165,14 @@ namespace AdventOfCode2023
                     else
                         Console.WriteLine($"The Distinct combinations of ratings that will be accepted: {d19.PartTwo()}");
                     break;
+
+                case "25":
+                    Day25 d25 = new Day25();
+                    if (ans2 == "1")
+                        Console.WriteLine($"You get {d25.PartOne()} if you multiply the sizes of these two groups together!");
+                    else
+                        Console.WriteLine($"The Distinct combinations of ratings that will be accepted: {d25.PartTwo()}");
+                    break;
                 default:
                     break;
             }

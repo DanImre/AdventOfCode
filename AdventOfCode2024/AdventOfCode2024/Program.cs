@@ -16,7 +16,7 @@ namespace AdventOfCode2024
                 do
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("Which day would you like to run? [1-24] (Q to quit)");
+                    Console.WriteLine("Which day would you like to run? [1-25] (Q to quit)");
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
                     string? input = Console.ReadLine();
                     if (input?.ToLower() == "q")
@@ -27,7 +27,7 @@ namespace AdventOfCode2024
                     int.TryParse(input, out chosenDay);
                     classType = Type.GetType("AdventOfCode2024.Day" + chosenDay);
                 }
-                while (chosenDay < 1 || chosenDay > 24 || classType == null);
+                while (chosenDay < 1 || chosenDay > 25 || classType == null);
 
                 if (!keepRunning)
                     break;
