@@ -8,17 +8,15 @@ namespace AdventOfCode2015
 {
     public class Day01 : IDay
     {
-        public string InputPath { get; set; } = "Day1Input.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string input = File.ReadAllLines(InputPath)[0];
+            string input = File.ReadAllLines(inputPath)[0];
             Console.WriteLine($"The instructions take Santa the the {input.Count(x => x == '(') - input.Count(x => x == ')')}th floor!"); 
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string input = File.ReadAllLines(InputPath)[0];
+            string input = File.ReadAllLines(inputPath)[0];
 
             int floor = 0;
             for (int i = 0; i < input.Length; i++)

@@ -9,14 +9,12 @@ namespace AdventOfCode2015
 {
     public class Day02 : IDay
     {
-        public string InputPath { get; set; } = "Day2Input.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
             //PartOneCompact();
             //return;
             // [l,w,h] list:
-            List<List<int>> input = File.ReadAllLines(InputPath)
+            List<List<int>> input = File.ReadAllLines(inputPath)
                 .Select(x => x
                     .Split('x')
                     .Select(int.Parse)
@@ -46,10 +44,10 @@ namespace AdventOfCode2015
             Console.WriteLine($"THe total square feet of wrapping paper should be: {solution}");
         }
 
-        public void PartOneCompact()
+        public void PartOneCompact(string inputPath)
         {
             // [l,w,h] list:
-            List<List<int>> input = File.ReadAllLines(InputPath)
+            List<List<int>> input = File.ReadAllLines(inputPath)
                 .Select(x => x
                     .Split('x')
                     .Select(int.Parse)
@@ -69,10 +67,10 @@ namespace AdventOfCode2015
             Console.WriteLine($"THe total square feet of wrapping paper should be: {solution}");
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             // [l,w,h] list:
-            List<List<int>> input = File.ReadAllLines(InputPath)
+            List<List<int>> input = File.ReadAllLines(inputPath)
                 .Select(x => x
                     .Split('x')
                     .Select(int.Parse)

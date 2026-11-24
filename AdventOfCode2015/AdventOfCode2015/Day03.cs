@@ -21,11 +21,10 @@ namespace AdventOfCode2015
                 this.y = y;
             }
         }
-        public string InputPath { get; set; } = "Day3Input.txt";
 
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             HashSet<(int x, int y)> hs = new HashSet<(int x, int y)>();
             (int x, int y) currentPosition = (0, 0);
@@ -55,9 +54,9 @@ namespace AdventOfCode2015
             Console.WriteLine($"A total of {hs.Count} houses receive a gift.");
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             HashSet<(int x, int y)> hs = new HashSet<(int x, int y)>();
 

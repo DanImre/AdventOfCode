@@ -11,11 +11,9 @@ namespace AdventOfCode2015
 {
     public class Day04 : IDay
     {
-        public string InputPath { get; set; } = "Day4Input.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string hasKey = File.ReadAllLines(InputPath)[0];
+            string hasKey = File.ReadAllLines(inputPath)[0];
 
             int solution = 1;
             while (true)
@@ -36,9 +34,9 @@ namespace AdventOfCode2015
             Console.WriteLine($"The lowest positive number to produce a hash with 5 starting zeros is: {solution}.");
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string hasKey = File.ReadAllLines(InputPath)[0];
+            string hasKey = File.ReadAllLines(inputPath)[0];
 
             int solution = 1;
             while (true)

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode2015
 {
@@ -49,17 +50,55 @@ namespace AdventOfCode2015
                 }
                 while (chosenPart < 1 || chosenPart > 2);
 
-                Console.ForegroundColor = ConsoleColor.White;
-
                 if (!keepRunning)
                     break;
+
+                string inputPath = "";
+                string[] possibleInputs = [.. Directory.GetFiles("./", "Day*.txt").Select(x => x.Substring(2)).Where(x => Regex.IsMatch(x, $"Day{chosenDay}[a-zA-Z.]+"))];
+
+                if (possibleInputs.Length > 0)
+                {
+                    int chosenInputFile = 0;
+                    do
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine($"Which file would you like to run it with? [1-{possibleInputs.Length}] (Q to quit)");
+
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.WriteLine();
+                        for (int i = 0; i < possibleInputs.Length; i++)
+                            Console.WriteLine($"\t[{i+1}] {possibleInputs[i]}");
+                        Console.WriteLine();
+
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        string? input = Console.ReadLine();
+                        if (input?.ToLower() == "q")
+                        {
+                            keepRunning = false;
+                            break;
+                        }
+                        int.TryParse(input, out chosenInputFile);
+                    }
+                    while (chosenInputFile < 1 || chosenInputFile > possibleInputs.Length);
+
+                    if (!keepRunning)
+                        break;
+
+                    inputPath = possibleInputs[chosenInputFile - 1];
+                }
+                else
+                    Console.WriteLine("Input file not found!");
+
+                Console.ForegroundColor = ConsoleColor.White;
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
                 if (chosenPart == 1)
-                    dayInstance.PartOne();
+                    dayInstance.PartOne(inputPath);
                 else
-                    dayInstance.PartTwo();
+                    dayInstance.PartTwo(inputPath);
+
+                stopwatch.Stop();
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"A kód {stopwatch.Elapsed} idő alatt futott le!");
