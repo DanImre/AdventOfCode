@@ -15,10 +15,10 @@ namespace AdventOfCode2023
 
         }
 
-        public long PartOne() //403695602
+        public long PartOne(string inputPath) //403695602
         {
             //string[] s = File.ReadAllLines("day5test.txt");
-            string[] s = File.ReadAllLines("day5.txt");
+            string[] s = File.ReadAllLines(inputPath);
             List<long> map = s[0].Split(':')[1].Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(kk => long.Parse(kk)).ToList();
 
             for (int index = 3; index < s.Length; index += 2)
@@ -44,10 +44,10 @@ namespace AdventOfCode2023
 
             return map.Min();
         }
-        public long PartTwo() //96143715 too low
+        public long PartTwo(string inputPath) //96143715 too low
         {
             //string[] s = File.ReadAllLines("day5test.txt");
-            string[] s = File.ReadAllLines("day5.txt");
+            string[] s = File.ReadAllLines(inputPath);
             long[] temp = s[0].Split(':')[1].Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(kk => long.Parse(kk)).ToArray();
 
             List<(long start, long end)> seeds = new List<(long start, long end)>();

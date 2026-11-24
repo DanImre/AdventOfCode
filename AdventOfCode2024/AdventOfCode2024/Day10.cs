@@ -9,12 +9,9 @@ namespace AdventOfCode2024
 {
     public class Day10 : IDay
     {
-        public string InputPath { get; set; } = "day10Input.txt";
-        //public string InputPath { get; set; } = "day10TestInput.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             int solution = 0;
             for (int i = 0; i < s.Length; i++)
@@ -52,9 +49,9 @@ namespace AdventOfCode2024
             Console.WriteLine($"Sum of the scores of all trailheads is: {solution}"); // 468
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             Queue<(int y, int x)> q = new Queue<(int y, int x)>();
 

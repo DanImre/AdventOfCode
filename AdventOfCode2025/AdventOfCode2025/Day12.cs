@@ -12,13 +12,10 @@ namespace AdventOfCode2025
 {
     public class Day12 : IDay
     {
-        public string InputPath { get; set; } = "day12Input.txt";
-        //public string InputPath { get; set; } = "day12InputTest.txt";
-
         // There are only OBVIOUS outcomes for this one... either you can fit all the presents or you can't.
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string s = File.ReadAllText(InputPath);
+            string s = File.ReadAllText(inputPath);
 
             List<int> shapes = s
                 .Split(":")
@@ -67,7 +64,7 @@ namespace AdventOfCode2025
             Console.WriteLine($"The are {solution} regions that can fit all of the presents listed.");
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             Console.WriteLine("There was no part 2 :( The solution for the first one is: 579");
         }

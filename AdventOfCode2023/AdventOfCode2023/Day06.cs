@@ -15,10 +15,10 @@ namespace AdventOfCode2023
         {
 
         }
-        public long PartOne()
+        public long PartOne(string inputPath)
         {
             //string[] s = File.ReadAllLines("day6test.txt");
-            string[] s = File.ReadAllLines("day6.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             long[] times = s[0].Split(':')[1].Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(kk => long.Parse(kk)).ToArray();
             long[] distances = s[1].Split(':')[1].Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(kk => long.Parse(kk)).ToArray();
@@ -39,10 +39,10 @@ namespace AdventOfCode2023
 
             return solution;
         }
-        public long PartTwo()
+        public long PartTwo(string inputPath)
         {
             //string[] s = File.ReadAllLines("day6test.txt");
-            string[] s = File.ReadAllLines("day6.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             long time = long.Parse(string.Join("",s[0].Split(':')[1].Split(' ', StringSplitOptions.RemoveEmptyEntries)));
             long distance = long.Parse(string.Join("", s[1].Split(':')[1].Split(' ', StringSplitOptions.RemoveEmptyEntries)));

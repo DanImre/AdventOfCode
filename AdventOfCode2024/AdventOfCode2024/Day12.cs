@@ -9,11 +9,6 @@ namespace AdventOfCode2024
 {
     public class Day12 : IDay
     {
-        public string InputPath { get; set; } = "day12Input.txt";
-        //public string InputPath { get; set; } = "day12TestInput.txt";
-        //public string InputPath { get; set; } = "day12TestInput2.txt";
-        //public string InputPath { get; set; } = "day12TestInput3.txt";
-
         private enum Wall
         {
             UP,
@@ -22,9 +17,9 @@ namespace AdventOfCode2024
             RIGHT
         }
 
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             int solution = 0;
 
@@ -80,9 +75,9 @@ namespace AdventOfCode2024
             Console.WriteLine($"The total price of fencing all regions is {solution}"); //1461806
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             int solution = 0;
 

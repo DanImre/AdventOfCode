@@ -13,9 +13,9 @@ namespace AdventOfCode2023
         {
 
         }
-        public int PartOne() //495972
+        public int PartOne(string inputPath) //495972
         {
-            string[] s = File.ReadAllLines("day15.txt")[0].Split(',');
+            string[] s = File.ReadAllLines(inputPath)[0].Split(',');
             //string[] s = File.ReadAllLines("day15test.txt")[0].Split(',');
 
             int solution = 0;
@@ -31,9 +31,9 @@ namespace AdventOfCode2023
             return solution;
 
         }
-        public int PartTwo() //245223
+        public int PartTwo(string inputPath) //245223
         {
-            string[] s = File.ReadAllLines("day15.txt")[0].Split(',');
+            string[] s = File.ReadAllLines(inputPath)[0].Split(',');
             //string[] s = File.ReadAllLines("day15test.txt")[0].Split(',');
             List<List<string>> boxes = new List<List<string>>();
             for (int i = 0; i < 256; i++)

@@ -5,12 +5,9 @@ namespace AdventOfCode2024
 {
     public class Day24 : IDay
     {
-        public string InputPath { get; set; } = "day24Input.txt";
-        //public string InputPath { get; set; } = "day24TestInput.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             Dictionary<string, bool> valueDict = [];
 
@@ -76,9 +73,9 @@ namespace AdventOfCode2024
 
         // Total bullshit, had to cheat
         // Unsubstantiated assumtions are needed, like XOR has to be the the last gate before a z wire, I can prove this is not the case by adding 2 additional gates (an OR and an AND) and that is still a valid configuration based on the task description
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             Dictionary<string, (string op, string[] ops)> nodes = [];
 

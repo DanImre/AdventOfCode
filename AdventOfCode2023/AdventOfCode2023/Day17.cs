@@ -14,10 +14,10 @@ namespace AdventOfCode2023
 
         }
 
-        public int PartOne() // 1001
+        public int PartOne(string inputPath) // 1001
         {
             //int[][] s = File.ReadAllLines("day17test.txt").Select(kk => kk.Select(kk => kk - '0').ToArray()).ToArray();
-            int[][] s = File.ReadAllLines("day17.txt").Select(kk => kk.Select(kk => kk - '0').ToArray()).ToArray();
+            int[][] s = File.ReadAllLines(inputPath).Select(kk => kk.Select(kk => kk - '0').ToArray()).ToArray();
 
             HashSet<(int y, int x, int dirY, int dirX, int moved)> hs = new HashSet<(int y, int x, int dirY, int dirX, int moved)>();
 
@@ -68,10 +68,10 @@ namespace AdventOfCode2023
             return -1;
         }
 
-        public int PartTwo() // 1197
+        public int PartTwo(string inputPath) // 1197
         {
             //int[][] s = File.ReadAllLines("day17test.txt").Select(kk => kk.Select(kk => kk - '0').ToArray()).ToArray();
-            int[][] s = File.ReadAllLines("day17.txt").Select(kk => kk.Select(kk => kk - '0').ToArray()).ToArray();
+            int[][] s = File.ReadAllLines(inputPath).Select(kk => kk.Select(kk => kk - '0').ToArray()).ToArray();
 
             HashSet<(int y, int x, int dirY, int dirX, int moved)> hs = new HashSet<(int y, int x, int dirY, int dirX, int moved)>();
 

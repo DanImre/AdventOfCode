@@ -26,11 +26,7 @@ namespace AdventOfCode2024
 
     public class Day17 : IDay
     {
-        public string InputPath { get; set; } = "day17Input.txt";
-        //public string InputPath { get; set; } = "day17TestInput.txt";
-        //public string InputPath { get; set; } = "day17TestInput2.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
             int registerA = 0;
             int registerB = 0;
@@ -54,7 +50,7 @@ namespace AdventOfCode2024
                 }
             }
 
-            using (StreamReader f = new StreamReader(InputPath))
+            using (StreamReader f = new StreamReader(inputPath))
             {
                 registerA = int.Parse(f.ReadLine()!.Split(':').Last());
                 registerB = int.Parse(f.ReadLine()!.Split(':').Last());
@@ -126,11 +122,11 @@ namespace AdventOfCode2024
             - not all series of values will eventually produce a correct answer so
               we search the full space, another DFS babee
         */
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             int[] program = Array.Empty<int>();
 
-            using (StreamReader f = new StreamReader(InputPath))
+            using (StreamReader f = new StreamReader(inputPath))
             {
                 _ = int.Parse(f.ReadLine()!.Split(':').Last());
                 _ = int.Parse(f.ReadLine()!.Split(':').Last());

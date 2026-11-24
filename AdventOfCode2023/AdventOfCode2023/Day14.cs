@@ -8,10 +8,10 @@ namespace AdventOfCode2023
 {
     public class Day14
     {
-        public int PartOne()
+        public int PartOne(string inputPath)
         {
             //char[][] s = File.ReadAllLines("day14test.txt").Select(kk => kk.ToArray()).ToArray();
-            char[][] s = File.ReadAllLines("day14.txt").Select(kk => kk.ToArray()).ToArray();
+            char[][] s = File.ReadAllLines(inputPath).Select(kk => kk.ToArray()).ToArray();
 
             for (int i = 0; i < s.Length; i++)
                 for (int j = 0; j < s[0].Length; j++)
@@ -33,10 +33,10 @@ namespace AdventOfCode2023
             return solution;
         }
 
-        public int PartTwo()
+        public int PartTwo(string inputPath)
         {
             //char[][] s = File.ReadAllLines("day14test.txt").Select(kk => kk.ToArray()).ToArray();
-            char[][] s = File.ReadAllLines("day14.txt").Select(kk => kk.ToArray()).ToArray();
+            char[][] s = File.ReadAllLines(inputPath).Select(kk => kk.ToArray()).ToArray();
 
             Dictionary<string, int> dp = new Dictionary<string, int>();
             for (int z = 0; z < 1000000000; z++)

@@ -11,12 +11,9 @@ namespace AdventOfCode2024
 {
     public class Day11 : IDay
     {
-        public string InputPath { get; set; } = "day11Input.txt";
-        //public string InputPath { get; set; } = "day11TestInput.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string s = File.ReadAllLines(InputPath).First();
+            string s = File.ReadAllLines(inputPath).First();
 
             LinkedListNode head = new LinkedListNode(-1);
 
@@ -65,9 +62,9 @@ namespace AdventOfCode2024
             Console.WriteLine($"There will be a total of {solution} rocks after 25 blinks."); // 193607
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string s = File.ReadAllLines(InputPath).First();
+            string s = File.ReadAllLines(inputPath).First();
 
             Dictionary<long, long> amountOfRocks = new();
 

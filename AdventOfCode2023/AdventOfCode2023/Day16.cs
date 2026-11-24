@@ -14,10 +14,10 @@ namespace AdventOfCode2023
 
         }
 
-        public int PartOne() // 7632
+        public int PartOne(string inputPath) // 7632
         {
             //string[] s = File.ReadAllLines("day16test.txt");
-            string[] s = File.ReadAllLines("day16.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             HashSet<(int y, int x)> visited = new HashSet<(int y, int x)>();
             HashSet<((int y, int x), int direction)> visitedWithoutLoops = new HashSet<((int y, int x), int direction)>();
@@ -124,10 +124,10 @@ namespace AdventOfCode2023
 
             return visited.Count;
         }
-        public int PartTwo() // 8023
+        public int PartTwo(string inputPath) // 8023
         {
             //string[] s = File.ReadAllLines("day16test.txt");
-            string[] s = File.ReadAllLines("day16.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             HashSet<(int y, int x)> visited = new HashSet<(int y, int x)>();
             HashSet<((int y, int x), int direction)> visitedWithoutLoops = new HashSet<((int y, int x), int direction)>();

@@ -15,9 +15,9 @@ namespace AdventOfCode2023
 
         }
 
-        public int PartOne() //544433
+        public int PartOne(string inputPath) //544433
         {
-            char[][] s = File.ReadAllLines("day3.txt").Select(kk => kk.ToArray()).ToArray();
+            char[][] s = File.ReadAllLines(inputPath).Select(kk => kk.ToArray()).ToArray();
 
             int solution = 0;
 
@@ -63,9 +63,9 @@ namespace AdventOfCode2023
         }
 
         
-        public long PartTwo() //76314915
+        public long PartTwo(string inputPath) //76314915
         {
-            char[][] s = File.ReadAllLines("day3árpi.txt").Select(kk => kk.ToArray()).ToArray();
+            char[][] s = File.ReadAllLines(inputPath).Select(kk => kk.ToArray()).ToArray();
 
             long solution = 0;
 

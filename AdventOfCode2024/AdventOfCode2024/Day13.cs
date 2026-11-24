@@ -10,10 +10,7 @@ namespace AdventOfCode2024
 {
     public class Day13 : IDay
     {
-        public string InputPath { get; set; } = "day13Input.txt";
-        //public string InputPath { get; set; } = "day13TestInput.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
             // Idea, this is just a graph with weights if 1 and 3 BFS (Breadth-first search) + visited (Basicly Dijkstra)
             // Checked the input, numbers are not that big and There are only 'positive steps'
@@ -23,7 +20,7 @@ namespace AdventOfCode2024
             // Would be great if the task was to just find the price, not the minimum cost
 
 
-            int[][] s = File.ReadAllLines(InputPath)
+            int[][] s = File.ReadAllLines(inputPath)
                 .Select(kk => kk.Split(new char[] { ',', ' ', ':', 'Y', 'X', '=' }, StringSplitOptions.RemoveEmptyEntries)
                     .TakeLast(2)
                     .Select(int.Parse)
@@ -70,7 +67,7 @@ namespace AdventOfCode2024
             Console.WriteLine($"The fewest tokens you would have to spend to win all possible prizes is {solution}"); // 31623
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             // Idea, create a vector that which we can multiply to get the prize's position
             // Best I can think of is to try up to like 10-20 iterations, choose the best one
@@ -86,7 +83,7 @@ namespace AdventOfCode2024
             // (*) If there were multiple solutions, 1 vector would have to be a multiple of the other, in which case if a < 3*b then we use b only otherwise a only
             // In the input this never accours tho
 
-            int[][] s = File.ReadAllLines(InputPath)
+            int[][] s = File.ReadAllLines(inputPath)
                 .Select(kk => kk.Split(new char[] { ',', ' ', ':', 'Y', 'X', '=' }, StringSplitOptions.RemoveEmptyEntries)
                     .TakeLast(2)
                     .Select(int.Parse)

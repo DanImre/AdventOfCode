@@ -10,14 +10,11 @@ namespace AdventOfCode2024
 {
     public class Day18 : IDay
     {
-        public string InputPath { get; set; } = "day18Input.txt";
-        //public string InputPath { get; set; } = "day18TestInput.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
             int wideness = 70;
             int[,] map = new int[wideness + 1, wideness + 1];
-            using (StreamReader f = new StreamReader(InputPath))
+            using (StreamReader f = new StreamReader(inputPath))
             {
                 for (int i = 0; i < 1024; i++)
                 {
@@ -58,12 +55,12 @@ namespace AdventOfCode2024
             }
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             int wideness = 70;
             int[,] map = new int[wideness + 1, wideness + 1];
             Queue<(int y, int x)> bytes = new();
-            using (StreamReader f = new StreamReader(InputPath))
+            using (StreamReader f = new StreamReader(inputPath))
             {
                 for (int i = 0; i < 1024; i++)
                 {

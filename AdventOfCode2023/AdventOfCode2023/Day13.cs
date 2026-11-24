@@ -14,10 +14,10 @@ namespace AdventOfCode2023
 
         }
 
-        public int PartOne() //35210
+        public int PartOne(string inputPath) //35210
         {
             //string[] file = File.ReadAllLines("day13test.txt");
-            string[] file = File.ReadAllLines("day13.txt");
+            string[] file = File.ReadAllLines(inputPath);
 
             int solution = 0;
 
@@ -118,10 +118,10 @@ namespace AdventOfCode2023
             return solution;
         }
 
-        public int PartTwo() //31974
+        public int PartTwo(string inputPath) //31974
         {
             //string[] file = File.ReadAllLines("day13test.txt");
-            string[] file = File.ReadAllLines("day13.txt");
+            string[] file = File.ReadAllLines(inputPath);
 
             int solution = 0;
 

@@ -54,7 +54,7 @@ namespace AdventOfCode2015
                     break;
 
                 string inputPath = "";
-                string[] possibleInputs = [.. Directory.GetFiles("./", "Day*.txt").Select(x => x.Substring(2)).Where(x => Regex.IsMatch(x, $"Day{chosenDay}[a-zA-Z.]+"))];
+                string[] possibleInputs = [.. Directory.GetFiles(".\\Inputs\\", "Day*.txt").Select(x => x.Substring(2)).Where(x => Regex.IsMatch(x, $"Day{chosenDay}[a-zA-Z.]+"))];
 
                 if (possibleInputs.Length > 0)
                 {

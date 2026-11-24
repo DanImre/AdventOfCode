@@ -13,10 +13,10 @@ namespace AdventOfCode2023
 
         }
 
-        public long PartOne() //1972648895
+        public long PartOne(string filePath) //1972648895
         {
             //int[][] s = File.ReadAllLines("day9test.txt").Select(kk => kk.Split(' ').Select(zz => int.Parse(zz)).ToArray()).ToArray();
-            int[][] s = File.ReadAllLines("day9.txt").Select(kk => kk.Split(' ').Select(zz => int.Parse(zz)).ToArray()).ToArray();
+            int[][] s = File.ReadAllLines(filePath).Select(kk => kk.Split(' ').Select(zz => int.Parse(zz)).ToArray()).ToArray();
 
             long solution = 0;
 
@@ -38,10 +38,10 @@ namespace AdventOfCode2023
 
             return solution;
         }
-        public long PartTwo() //919
+        public long PartTwo(string filePath) //919
         {
             //int[][] s = File.ReadAllLines("day9test.txt").Select(kk => kk.Split(' ').Select(zz => int.Parse(zz)).ToArray()).ToArray();
-            int[][] s = File.ReadAllLines("day9.txt").Select(kk => kk.Split(' ').Select(zz => int.Parse(zz)).ToArray()).ToArray();
+            int[][] s = File.ReadAllLines(filePath).Select(kk => kk.Split(' ').Select(zz => int.Parse(zz)).ToArray()).ToArray();
 
             long solution = 0;
 

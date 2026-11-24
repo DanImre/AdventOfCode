@@ -14,10 +14,10 @@ namespace AdventOfCode2023
 
         }
 
-        public long PartOne() //9724940
+        public long PartOne(string inputPath) //9724940
         {
             //string[] s = File.ReadAllLines("day11test.txt");
-            string[] s = File.ReadAllLines("day11.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             List<(int y, int x)> pairs = new List<(int y, int x)>();
             for (int i = 0; i < s.Length; i++)
@@ -62,10 +62,10 @@ namespace AdventOfCode2023
 
             return solution;
         }
-        public long PartTwo() //wrong: 569053155896
+        public long PartTwo(string inputPath) //wrong: 569053155896
         {
             //string[] s = File.ReadAllLines("day11test.txt"); //82000210
-            string[] s = File.ReadAllLines("day11.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             long dist = 1000000;
 

@@ -9,19 +9,14 @@ namespace AdventOfCode2024
 {
     public class Day15 : IDay
     {
-        public string InputPath { get; set; } = "day15Input.txt";
-        //public string InputPath { get; set; } = "day15TestInput.txt";
-        //public string InputPath { get; set; } = "day15TestInput2.txt";
-        //public string InputPath { get; set; } = "day15TestInput3.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             List<List<char>> map = new();
             Queue<char> instructions = new();
 
-            using (StreamReader f = new StreamReader(InputPath))
+            using (StreamReader f = new StreamReader(inputPath))
             {
                 while (!f.EndOfStream
                     && f.ReadLine() is string line && line != "")
@@ -101,14 +96,14 @@ namespace AdventOfCode2024
             Console.WriteLine($"The sum of all boxes' GPS coordinates is {solution}");
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             List<List<char>> map = new();
             Queue<char> instructions = new();
 
-            using (StreamReader f = new StreamReader(InputPath))
+            using (StreamReader f = new StreamReader(inputPath))
             {
                 while (!f.EndOfStream
                     && f.ReadLine() is string line && line != "")

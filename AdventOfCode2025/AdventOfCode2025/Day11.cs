@@ -9,14 +9,9 @@ namespace AdventOfCode2025
 {
     public class Day11 : IDay
     {
-        public string InputPath { get; set; } = "day11Input.txt";
-
-        //public string InputPath { get; set; } = "day11InputTest.txt";
-        //public string InputPath { get; set; } = "day11InputTest2.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            Dictionary<string, string[]> s = File.ReadAllLines(InputPath)
+            Dictionary<string, string[]> s = File.ReadAllLines(inputPath)
                     .Select(x => x.Split(":"))
                     .ToDictionary(
                         x => x[0], 
@@ -47,9 +42,9 @@ namespace AdventOfCode2025
             Console.WriteLine($"There are {solution} different paths from 'you' to 'out'.");
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            Dictionary<string, string[]> s = File.ReadAllLines(InputPath)
+            Dictionary<string, string[]> s = File.ReadAllLines(inputPath)
                     .Select(x => x.Split(":"))
                     .ToDictionary(
                         x => x[0],

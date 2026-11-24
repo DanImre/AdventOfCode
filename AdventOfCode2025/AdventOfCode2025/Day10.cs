@@ -6,12 +6,9 @@ namespace AdventOfCode2025
 {
     public class Day10 : IDay
     {
-        public string InputPath { get; set; } = "day10Input.txt";
-        //public string InputPath { get; set; } = "day10InputTest.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            (int correctAnswer, int[] arr)[] s = File.ReadAllLines(InputPath)
+            (int correctAnswer, int[] arr)[] s = File.ReadAllLines(inputPath)
                 .Select(x =>
                 {
                     string[] split = x.Split(" ").SkipLast(1).ToArray();
@@ -56,9 +53,9 @@ namespace AdventOfCode2025
             Console.WriteLine($"The fewest button presses required to correctly configure the indicator lights on all of the machines is {solution}");
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            (int[] correctAnswer, int[][] arr)[] s = File.ReadAllLines(InputPath)
+            (int[] correctAnswer, int[][] arr)[] s = File.ReadAllLines(inputPath)
                 .Select(x =>
                 {
                     string[] split = x.Split(" ").Skip(1).ToArray();

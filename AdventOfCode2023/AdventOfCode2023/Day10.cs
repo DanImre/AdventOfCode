@@ -16,10 +16,10 @@ namespace AdventOfCode2023
 
         }
 
-        public int PartOne() //6867
+        public int PartOne(string inputPath) //6867
         {
             //char[][] s = File.ReadAllLines("day10test.txt").Select(kk => kk.ToArray()).ToArray();
-            char[][] s = File.ReadAllLines("day10.txt").Select(kk => kk.ToArray()).ToArray();
+            char[][] s = File.ReadAllLines(inputPath).Select(kk => kk.ToArray()).ToArray();
 
             (int y, int x) start = (0,0);
 
@@ -80,10 +80,10 @@ namespace AdventOfCode2023
 
             return 0;
         }
-        public int PartTwo() //858 too high
+        public int PartTwo(string inputPath) //858 too high
         {
             //char[][] s = File.ReadAllLines("day10test2.txt").Select(kk => kk.ToArray()).ToArray();
-            char[][] s = File.ReadAllLines("day10.txt").Select(kk => kk.ToArray()).ToArray();
+            char[][] s = File.ReadAllLines(inputPath).Select(kk => kk.ToArray()).ToArray();
 
             (int y, int x) start = (0, 0);
 

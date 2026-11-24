@@ -2,15 +2,12 @@
 {
     public class Day20 : IDay
     {
-        public string InputPath { get; set; } = "day20Input.txt";
-        //public string InputPath { get; set; } = "day20TestInput.txt";
-
         private List<(int y, int x)> steps = [(1, 0), (0, 1), (-1, 0), (0, -1)];
 
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
             // Idea, get best path, check for 1 gaps that save atleast 100 picoseconds like 415#4
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
             (int y, int x) start = (0, 0);
             (int y, int x) end = (0, 0);
 
@@ -92,13 +89,13 @@
             Console.WriteLine($"There are {solution} cheats that would save atleast {picosecondsToSave} picoseconds");
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             // Idea, same: get best path, but now check paths (with max lengths of 20) that reach the other parts of the path that would save atleast 100 picoseconds
             // Problem: Might not need to go back to the best path, could come out at a dead end and still be closer then without cheating
             // Solution: Map every node's distance from the end
 
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
             (int y, int x) start = (0, 0);
             (int y, int x) end = (0, 0);
 

@@ -13,15 +13,11 @@ namespace AdventOfCode2024
 {
     public class Day16 : IDay
     {
-        public string InputPath { get; set; } = "day16Input.txt";
-        //public string InputPath { get; set; } = "day16TestInput.txt";
-        //public string InputPath { get; set; } = "day16TestInput2.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
             // Idea, literally dijkstra (without path)
 
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             (int y, int x) start = (0, 0);
             (int y, int x) end = (0, 0);
@@ -95,10 +91,10 @@ namespace AdventOfCode2024
             Console.WriteLine($"The lowest score a Reindeer could possibly get is {solution}"); // 160624
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             // Recursive had stack overflow
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             (int y, int x) start = (0, 0);
             (int y, int x) end = (0, 0);

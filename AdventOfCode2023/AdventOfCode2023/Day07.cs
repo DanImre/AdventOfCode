@@ -50,10 +50,10 @@ namespace AdventOfCode2023
             }
         }
 
-        public long PartOne() //248559379
+        public long PartOne(string inputPath) //248559379
         {
             //string[] s = File.ReadAllLines("day7test.txt");
-            string[] s = File.ReadAllLines("day7.txt");
+            string[] s = File.ReadAllLines(inputPath);
             //string[] s = File.ReadAllLines("day7arpi.txt");
 
             List<Hand> hands = new List<Hand>();
@@ -123,10 +123,10 @@ namespace AdventOfCode2023
             }
         }
 
-        public long PartTwo() //249631254
+        public long PartTwo(string inputPath) //249631254
         {
             //string[] s = File.ReadAllLines("day7test.txt");
-            string[] s = File.ReadAllLines("day7.txt");
+            string[] s = File.ReadAllLines(inputPath);
             //string[] s = File.ReadAllLines("day7arpi.txt");
 
             List<Hand> hands = new List<Hand>();

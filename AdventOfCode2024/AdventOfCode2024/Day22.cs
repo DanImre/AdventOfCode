@@ -4,10 +4,6 @@ namespace AdventOfCode2024
 {
     public class Day22 : IDay
     {
-        public string InputPath { get; set; } = "day22Input.txt";
-        //public string InputPath { get; set; } = "day22TestInput.txt";
-        //public string InputPath { get; set; } = "day22TestInput2.txt";
-
         private long Mix(long secret, long num) => secret ^ num;
         private long Prune(long secret) => secret % 16777216;
         private long Evolve(long secret)
@@ -24,9 +20,9 @@ namespace AdventOfCode2024
             return secret;
         }
 
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             long solution = 0;
             foreach (var item in s)
@@ -44,7 +40,7 @@ namespace AdventOfCode2024
         }
 
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             (int first, int second, int third, int forth) getSteps(Queue<int> q)
             {
@@ -52,7 +48,7 @@ namespace AdventOfCode2024
                 return (arr[0], arr[1], arr[2], arr[3]);
             }
 
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             Dictionary<(int first, int second, int third, int forth), int> seqCount = [];
             foreach (var item in s)

@@ -5,12 +5,9 @@ namespace AdventOfCode2024
 {
     public class Day25 : IDay
     {
-        public string InputPath { get; set; } = "day25Input.txt";
-        //public string InputPath { get; set; } = "day25TestInput.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string[] s = File.ReadAllText(InputPath).Replace("\r", "").Split("\n\n");
+            string[] s = File.ReadAllText(inputPath).Replace("\r", "").Split("\n\n");
 
             List<(int[] heights, int availableSpace)> locks = [];
             List<(int[] heights, int neededSpace)> keys = [];
@@ -53,9 +50,9 @@ namespace AdventOfCode2024
             Console.WriteLine($"There are {solution} unique lock/key pairs fit together without overlapping in any column!");
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             long solution = 0;
             // For the test it should be: 2024

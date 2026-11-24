@@ -10,15 +10,12 @@ namespace AdventOfCode2024
 {
     public class Day14 : IDay
     {
-        public string InputPath { get; set; } = "day14Input.txt";
-        //public string InputPath { get; set; } = "day14TestInput.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
             // Idea, isn't this just modulo + the counting the regions?
 
             List<RestroomRobot> robots = new();
-            using (StreamReader f = new StreamReader(InputPath))
+            using (StreamReader f = new StreamReader(inputPath))
             {
                 while (!f.EndOfStream)
                 {
@@ -27,7 +24,7 @@ namespace AdventOfCode2024
                 }
             }
 
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             int seconds = 100;
             int moduloX = 101;
@@ -57,10 +54,10 @@ namespace AdventOfCode2024
             Console.WriteLine($"The safety factor will be {solution} after exactly 100 seconds have elapsed"); //214109808
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             List<RestroomRobot> robots = new();
-            using (StreamReader f = new StreamReader(InputPath))
+            using (StreamReader f = new StreamReader(inputPath))
             {
                 while (!f.EndOfStream)
                 {
@@ -69,7 +66,7 @@ namespace AdventOfCode2024
                 }
             }
 
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             int moduloX = 101;
             int moduloY = 103;

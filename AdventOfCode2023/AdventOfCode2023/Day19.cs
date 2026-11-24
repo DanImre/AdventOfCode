@@ -14,10 +14,10 @@ namespace AdventOfCode2023
 
         }
 
-        public int PartOne()
+        public int PartOne(string inputPath)
         {
             //string[] s = File.ReadAllLines("day19test.txt");
-            string[] s = File.ReadAllLines("day19.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             Dictionary<string, List<Func<(int x, int m, int a, int s), string?>>> dic = new Dictionary<string, List<Func<(int x, int m, int a, int s), string?>>>();
 
@@ -96,10 +96,10 @@ namespace AdventOfCode2023
             return solution;
         }
 
-        public long PartTwo()
+        public long PartTwo(string inputPath)
         {
             //string[] s = File.ReadAllLines("day19test.txt");
-            string[] s = File.ReadAllLines("day19.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             //Dictionary<string, List<Func<((int min, int max) x, (int min, int max) m, (int min, int max) a, (int min, int max) s), (((int min, int max) x, (int min, int max) m, (int min, int max) a, (int min, int max) s) ranges, string next)>>> dic = new Dictionary<string, List<Func<((int min, int max) x, (int min, int max) m, (int min, int max) a, (int min, int max) s), (((int min, int max) x, (int min, int max) m, (int min, int max) a, (int min, int max) s) ranges, string next)>>>();
             Dictionary<string, List<(string template, string next)>> dic = new Dictionary<string, List<(string template, string next)>>();

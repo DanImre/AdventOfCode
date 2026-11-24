@@ -38,10 +38,10 @@ namespace AdventOfCode2023
             }
         }
 
-        public long PartOne() //19199
+        public long PartOne(string inputPath) //19199
         {
             //string[] s = File.ReadAllLines("day8test.txt");
-            string[] s = File.ReadAllLines("day8.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             Dictionary<string, Node> nodes = new Dictionary<string, Node>();
 
@@ -70,10 +70,10 @@ namespace AdventOfCode2023
 
             return solution;
         }
-        public long PartTwo() //13663968099527
+        public long PartTwo(string inputPath) //13663968099527
         {
             //string[] s = File.ReadAllLines("day8test2.txt");
-            string[] s = File.ReadAllLines("day8.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             Dictionary<string, Node> nodes = new Dictionary<string, Node>();
 

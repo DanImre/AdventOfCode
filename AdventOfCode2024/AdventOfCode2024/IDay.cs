@@ -8,10 +8,8 @@ namespace AdventOfCode2024
 {
     public interface IDay
     {
-        public string InputPath { get; set; }
+        public void PartOne(string inputPath);
 
-        public void PartOne();
-
-        public void PartTwo();
+        public void PartTwo(string inputPath);
     }
 }

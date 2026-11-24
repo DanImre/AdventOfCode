@@ -4,9 +4,6 @@ namespace AdventOfCode2024
 {
     public class Day21 : IDay
     {
-        public string InputPath { get; set; } = "day21Input.txt";
-        //public string InputPath { get; set; } = "day21TestInput.txt";
-
         private int NumberOfDirectionalRobots = 2;
 
         /// <summary>
@@ -17,7 +14,7 @@ namespace AdventOfCode2024
         /// Then call these functions recursively from the bottom up,
         /// because we need the shortest possible answer we need to do multiple paralell sequences where the shortest one is not apparent
         /// </summary>
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
             char[,] numericMap = new char[4, 3]
             {
@@ -126,7 +123,7 @@ namespace AdventOfCode2024
 
             long solution = 0;
 
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
             foreach (var item in s)
             {
                 List<string> sol = [""];
@@ -183,7 +180,7 @@ namespace AdventOfCode2024
         }
 
         // First part was pure luck, we do need to try out every path
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             char[,] numericMap = new char[4, 3]
             {
@@ -314,7 +311,7 @@ namespace AdventOfCode2024
             }
 
             long solution = 0;
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
             foreach (var item in s)
             {
                 List<string> sol = [""];

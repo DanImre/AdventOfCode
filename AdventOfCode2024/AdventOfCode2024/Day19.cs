@@ -10,12 +10,9 @@ namespace AdventOfCode2024
 {
     public class Day19 : IDay
     {
-        public string InputPath { get; set; } = "day19Input.txt";
-        //public string InputPath { get; set; } = "day19TestInput.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             string[] availablePatterns = s[0].Split(", ").ToArray();
 
@@ -55,10 +52,10 @@ namespace AdventOfCode2024
             Console.WriteLine($"{solution} designs are possible."); // 308
         }
 
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
             // Idea: Same but with a dictionary -> move the same patterns at once
-            string[] s = File.ReadAllLines(InputPath);
+            string[] s = File.ReadAllLines(inputPath);
 
             string[] availablePatterns = s[0].Split(", ").ToArray();
 

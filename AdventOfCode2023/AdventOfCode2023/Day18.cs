@@ -14,10 +14,10 @@ namespace AdventOfCode2023
 
         }
 
-        public int PartOne() // 35401
+        public int PartOne(string inputPath) // 35401
         {
             //string[][] s = File.ReadAllLines("day18test.txt").Select(kk => kk.Split(' ')).ToArray();
-            string[][] s = File.ReadAllLines("day18.txt").Select(kk => kk.Split(' ')).ToArray();
+            string[][] s = File.ReadAllLines(inputPath).Select(kk => kk.Split(' ')).ToArray();
 
             int perimeter = 0;
 
@@ -64,10 +64,10 @@ namespace AdventOfCode2023
             return (int)(perimeter + pointCount);
         }
 
-        public long PartTwo()
+        public long PartTwo(string inputPath)
         {
             //string[][] s = File.ReadAllLines("day18test.txt").Select(kk => kk.Split(' ')).ToArray();
-            string[][] s = File.ReadAllLines("day18.txt").Select(kk => kk.Split(' ')).ToArray();
+            string[][] s = File.ReadAllLines(inputPath).Select(kk => kk.Split(' ')).ToArray();
 
             long perimeter = 0;
 

@@ -14,14 +14,14 @@ namespace AdventOfCode2023
 
         }
 
-        public int PartOne() //55208
+        public int PartOne(string inputPath) //55208
         {
-            return File.ReadAllLines("day1.txt").Select(kk => kk.Where(zz => char.IsDigit(zz))).Sum(kk => int.Parse(kk.First().ToString() + kk.Last().ToString()));
+            return File.ReadAllLines(inputPath).Select(kk => kk.Where(zz => char.IsDigit(zz))).Sum(kk => int.Parse(kk.First().ToString() + kk.Last().ToString()));
         }
 
-        public long PartTwo() //54578
+        public long PartTwo(string inputPath) //54578
         {
-            string[] s = File.ReadAllLines("day1.txt");
+            string[] s = File.ReadAllLines(inputPath);
             Dictionary<string, int> dic = new Dictionary<string, int>()
             {
                 { "one", 1 },

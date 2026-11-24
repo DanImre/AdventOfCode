@@ -15,10 +15,10 @@ namespace AdventOfCode2023
 
         }
 
-        public int PartOne()
+        public int PartOne(string inputPath)
         {
             //string[] s = File.ReadAllLines("day25test.txt");
-            string[] s = File.ReadAllLines("day25.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             List<(string Key, List<string> Conns)> parsed = s
                 .Select(x => x.Split(":"))
@@ -98,10 +98,10 @@ namespace AdventOfCode2023
             //File.WriteAllLines("2023day25WithoutConns.dot", content.Distinct());
         }
 
-        public long PartTwo()
+        public long PartTwo(string inputPath)
         {
             //string[] s = File.ReadAllLines("day25test.txt");
-            string[] s = File.ReadAllLines("day25.txt");
+            string[] s = File.ReadAllLines(inputPath);
 
             return -1;
         }

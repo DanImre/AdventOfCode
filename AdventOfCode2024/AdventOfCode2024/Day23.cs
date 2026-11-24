@@ -5,12 +5,9 @@ namespace AdventOfCode2024
 {
     public class Day23 : IDay
     {
-        public string InputPath { get; set; } = "day23Input.txt";
-        //public string InputPath { get; set; } = "day23TestInput.txt";
-
-        public void PartOne()
+        public void PartOne(string inputPath)
         {
-            string[][] s = [.. File.ReadAllLines(InputPath).Select(x => x.Split('-'))];
+            string[][] s = [.. File.ReadAllLines(inputPath).Select(x => x.Split('-'))];
 
             Dictionary<string, HashSet<string>> nodes = [];
 
@@ -61,9 +58,9 @@ namespace AdventOfCode2024
         }
 
         // Runs for 11.3735033 secs
-        public void PartTwo()
+        public void PartTwo(string inputPath)
         {
-            string[][] s = [.. File.ReadAllLines(InputPath).Select(x => x.Split('-'))];
+            string[][] s = [.. File.ReadAllLines(inputPath).Select(x => x.Split('-'))];
 
             Dictionary<string, HashSet<string>> nodes = [];
             Dictionary<string, int> degrees = [];
